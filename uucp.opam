@@ -4,7 +4,6 @@ synopsis: """Unicode character properties for OCaml"""
 maintainer: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
 authors: ["The uucp programmers"]
 homepage: "https://erratique.ch/software/uucp"
-doc: "https://erratique.ch/software/uucp/doc/"
 dev-repo: "git+https://github.com/dune-universe/uucp.git"
 bug-reports: "https://github.com/dbuenzli/uucp/issues"
 tags: [ "unicode" "text" "character" "org:erratique" ]
