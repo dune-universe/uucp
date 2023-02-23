@@ -14,35 +14,16 @@ maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
 authors: "The uucp programmers"
 license: "ISC"
 tags: ["unicode" "text" "character" "org:erratique"]
-homepage: "https://erratique.ch/software/uucp"
-doc: "https://erratique.ch/software/uucp/doc/"
+homepage: "https://github.com/dune-universe/uucp"
 bug-reports: "https://github.com/dbuenzli/uucp/issues"
 depends: [
   "ocaml" {>= "4.14.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "1.1.0"}
-  "uucd" {with-test & dev & >= "17.0.0" & < "18.0.0"}
-  "uunf" {with-test}
+  "dune" {>= "1.1"}
 ]
 depopts: ["uunf" "cmdliner"]
 conflicts: [
   "uunf" {< "17.0.0" | >= "18.0.0"}
   "cmdliner" {< "1.1.0"}
 ]
-build: [
-  "ocaml"
-  "pkg/pkg.ml"
-  "build"
-  "--dev-pkg"
-  "%{dev}%"
-  "--with-uunf"
-  "%{uunf:installed}%"
-  "--with-cmdliner"
-  "%{cmdliner:installed}%"
-]
-post-messages:
-  "If the build fails with \"ocamlopt.opt got signal and exited\", issue 'ulimit -s unlimited' and retry."
-    {failure & (arch = "ppc64" | arch = "arm64")}
-dev-repo: "git+https://erratique.ch/repos/uucp.git"
-x-maintenance-intent: ["(latest)"]
+build: [ "dune" "build" "-p" name "-j" jobs "@install" ]
+dev-repo: "git+https://github.com/dune-universe/uucp.git"
